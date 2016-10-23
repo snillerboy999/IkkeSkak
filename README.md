@@ -1,0 +1,2 @@
+# IkkeSkak
+Fuck Niels. 
