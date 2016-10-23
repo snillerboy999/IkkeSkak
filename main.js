@@ -13,7 +13,6 @@ function preload() {
   game.load.image('player1', "res/player1.png");
   game.load.image('bullet', "res/bullet.png");
   game.load.image('bullet1', "res/bullet1.png");
-	game.load.image('buttonImg', "res/button.png")
 
 	//game.load.image('player2', "player2.png");
 }
