@@ -1,8 +1,9 @@
 var game = new Phaser.Game(1300, 700, Phaser.AUTO, '', { preload: preload, create: create, update: update });
 var player1;
 var player2;
-var keys;
+var cursors;
 var weapon; 
+var keyboard;
 
 
 function preload() {
@@ -26,7 +27,7 @@ function create() {
   player1.body.drag.set(70);
   player1.body.maxVelocity.set(500);
 
-  
+
 
 	player2 = this.add.sprite(200,350,'player1');
 	player2.scale.set(0.02,0.02);
@@ -35,7 +36,12 @@ function create() {
   player2.body.drag.set(70);
   player2.body.maxVelocity.set(500);
 
+  weapon = game.add.weapon(30, 'bullet');
+
 	cursors = game.input.keyboard.createCursorKeys();
+
+  keyboard = game.input.keyboard;
+
 
 }
 
@@ -65,11 +71,13 @@ function update() {
 
   }
 
-  if(cursors.left.isDown) {
+
+
+  if(keyboard.addKey(Phaser.KeyCode.A).isDown) {
 
     player2.body.angularVelocity = -250;
 
-  } else if(cursors.right.isDown) {
+  } else if(keyboard.addKey(Phaser.KeyCode.D).isDown) {
 
     player2.body.angularVelocity = 250;
 
@@ -79,7 +87,7 @@ function update() {
 
   }
 
-  if(cursors.up.isDown) {
+  if(keyboard.addKey(Phaser.KeyCode.W).isDown) {
 
     game.physics.arcade.accelerationFromRotation(player2.rotation, 300, player2.body.acceleration);
 
