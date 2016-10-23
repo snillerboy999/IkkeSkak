@@ -20,18 +20,18 @@ function create() {
 
 	player1 = this.add.sprite(100,350,'player');
 	player1.scale.setTo(0.035,0.035);
-    game.physics.arcade.enable(player1);
-  	player1.anchor.set(0.5,0.5);
-  	player1.body.drag.set(70);
-    player1.body.maxVelocity.set(500);
+  game.physics.arcade.enable(player1);
+  player1.anchor.set(0.5,0.5);
+  player1.body.drag.set(70);
+  player1.body.maxVelocity.set(500);
 
 
 	player2 = this.add.sprite(200,350,'player1');
 	player2.scale.set(0.02,0.02);
 	game.physics.arcade.enable(player2);
 	player2.anchor.set(0.5,0.5);
-    player2.body.drag.set(70);
-    player2.body.maxVelocity.set(500);
+  player2.body.drag.set(70);
+  player2.body.maxVelocity.set(500);
 
 	cursors = game.input.keyboard.createCursorKeys();
 
