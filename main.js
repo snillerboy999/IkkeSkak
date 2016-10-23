@@ -13,8 +13,8 @@ var text2;
 function preload() {
 
   game.load.image('bg1', "res/bg1.jpg");
-  game.load.image('player', "res/player.png");
   game.load.image('player1', "res/player1.png");
+  game.load.image('player2', "res/player2.png");
   game.load.image('bullet', "res/bullet.png");
   game.load.image('bullet1', "res/bullet1.png");
 }
