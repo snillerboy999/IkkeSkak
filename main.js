@@ -2,15 +2,16 @@ var game = new Phaser.Game(1300, 700, Phaser.AUTO, '', { preload: preload, creat
 var player1;
 var player2;
 var keys;
+var weapon; 
 
 
 function preload() {
 
 	game.load.image('bg1', "bg1.jpg");
 	game.load.image('player', "player.png");
-    game.load.image('player1', "player1.png");
-    game.load.image('bullet', "bullet.png");
-    game.load.image('bullet1', "bullet1.png");
+  game.load.image('player1', "player1.png");
+  game.load.image('bullet', "bullet.png");
+  game.load.image('bullet1', "bullet1.png");
 
 	//game.load.image('player2', "player2.png");
 }
@@ -25,6 +26,7 @@ function create() {
   player1.body.drag.set(70);
   player1.body.maxVelocity.set(500);
 
+  
 
 	player2 = this.add.sprite(200,350,'player1');
 	player2.scale.set(0.02,0.02);
