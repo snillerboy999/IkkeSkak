@@ -48,7 +48,7 @@ function create() {
   weapon1.fireRate = 20;
   weapon1.bulletSpeed = 800;
   weapon1.trackSprite(player1,20,0,true);  
-  game.physics.arcade.enable(weapon);
+  game.physics.arcade.enable(weapon1);
 
 
   weapon2 = game.add.weapon(100,'bullet1');
@@ -134,7 +134,7 @@ function update() {
 
   }
 
-  game.physics.arcade.overlap(weapon.bullets, player2, player2Die,null,this);
+  game.physics.arcade.overlap(weapon1.bullets, player2, player2Die,null,this);
   game.physics.arcade.overlap(weapon2.bullets, player1, player1Die, null, this);
   game.physics.arcade.collide(player2,player1, null,null,this);
 
@@ -146,7 +146,7 @@ function player2Die() {
   player2.position.set(1000,350);
   player1Kills += 1;
   weapon2.killAll();
-  weapon.killAll();
+  weapon1.killAll();
 
 }
 
@@ -157,7 +157,7 @@ function player1Die() {
   player2.position.set(1000,350);
   player2Kills += 1;
   weapon2.killAll();
-  weapon.killAll();
+  weapon1.killAll();
 
 
 }
