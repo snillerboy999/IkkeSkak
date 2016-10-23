@@ -4,6 +4,7 @@ var player2;
 var cursors;
 var weapon; 
 var keyboard;
+var weapon2;
 
 
 function preload() {
@@ -37,6 +38,20 @@ function create() {
   player2.body.maxVelocity.set(500);
 
   weapon = game.add.weapon(30, 'bullet');
+  weapon.killType = Phaser.Weapon.KILL_WORLD_BOUNDS;
+  weapon.fireRate = 100;
+  weapon.bulletSpeed = 600;
+  weapon.trackSprite(player1,20,0,true);
+
+
+  weapon2 = game.add.weapon(30,'bullet1');
+  weapon2.killType = Phaser.Weapon.KILL_WORLD_BOUNDS;
+  weapon2.fireRate = 100;
+  weapon2.bulletSpeed = 600;
+  weapon2.trackSprite(player2,20,0,true);
+
+
+
 
 	cursors = game.input.keyboard.createCursorKeys();
 
@@ -47,9 +62,9 @@ function create() {
 
 function update() {
 
-	if(cursors.up.isDown) {
+	if(keyboard.addKey(Phaser.KeyCode.W).isDown) {
 
-		game.physics.arcade.accelerationFromRotation(player1.rotation, 300, player1.body.acceleration);
+		game.physics.arcade.accelerationFromRotation(player1.rotation, 250, player1.body.acceleration);
 
 	} else {
 
@@ -57,11 +72,11 @@ function update() {
 
   }
 
-  if (cursors.left.isDown) {
+  if (keyboard.addKey(Phaser.KeyCode.A).isDown) {
 
     player1.body.angularVelocity = -250;
 
-  } else if (cursors.right.isDown) {
+  } else if (keyboard.addKey(Phaser.KeyCode.D).isDown) {
 
     player1.body.angularVelocity = 250;
 
@@ -73,11 +88,11 @@ function update() {
 
 
 
-  if(keyboard.addKey(Phaser.KeyCode.A).isDown) {
+  if(keyboard.addKey(Phaser.KeyCode.J).isDown) {
 
     player2.body.angularVelocity = -250;
 
-  } else if(keyboard.addKey(Phaser.KeyCode.D).isDown) {
+  } else if(keyboard.addKey(Phaser.KeyCode.L).isDown) {
 
     player2.body.angularVelocity = 250;
 
@@ -87,13 +102,25 @@ function update() {
 
   }
 
-  if(keyboard.addKey(Phaser.KeyCode.W).isDown) {
+  if(keyboard.addKey(Phaser.KeyCode.I).isDown) {
 
-    game.physics.arcade.accelerationFromRotation(player2.rotation, 300, player2.body.acceleration);
+    game.physics.arcade.accelerationFromRotation(player2.rotation, 250, player2.body.acceleration);
 
   } else {
 
     player2.body.acceleration.set(0);
 
   }
+
+  if(keyboard.addKey(Phaser.KeyCode.SHIFT).isDown) {
+
+    weapon.fire();
+
+  }
+  if(keyboard.addKey(Phaser.KeyCode.SPACEBAR).isDown) {
+
+    weapon2.fire();
+
+  }
+
 }
