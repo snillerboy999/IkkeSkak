@@ -5,6 +5,10 @@ var cursors;
 var weapon; 
 var keyboard;
 var weapon2;
+var player1Kills = 0;
+var player2Kills = 0;
+var text;
+var text2;
 
 
 function preload() {
@@ -31,7 +35,7 @@ function create() {
 
 
 
-	player2 = this.add.sprite(200,350,'player1');
+	player2 = this.add.sprite(1000,350,'player1');
 	player2.scale.set(0.02,0.02);
 	game.physics.arcade.enable(player2);
 	player2.anchor.set(0.5,0.5);
@@ -40,21 +44,22 @@ function create() {
   player2.body.collideWorldBounds = true;
 
 
-  weapon = game.add.weapon(30, 'bullet');
+  weapon = game.add.weapon(100, 'bullet');
   weapon.killType = Phaser.Weapon.KILL_WORLD_BOUNDS;
-  weapon.fireRate = 100;
-  weapon.bulletSpeed = 600;
-  weapon.trackSprite(player1,20,0,true);
+  weapon.fireRate = 20;
+  weapon.bulletSpeed = 800;
+  weapon.trackSprite(player1,20,0,true);  
+  game.physics.arcade.enable(weapon);
 
 
-  weapon2 = game.add.weapon(30,'bullet1');
+  weapon2 = game.add.weapon(100,'bullet1');
   weapon2.killType = Phaser.Weapon.KILL_WORLD_BOUNDS;
-  weapon2.fireRate = 100;
-  weapon2.bulletSpeed = 600;
+  weapon2.fireRate = 20;
+  weapon2.bulletSpeed = 800;
   weapon2.trackSprite(player2,20,0,true);
 
-
-
+  text = game.add.text(16,16, "0");
+  text2 = game.add.text(1100,16, "0");
 
 	cursors = game.input.keyboard.createCursorKeys();
 
@@ -65,6 +70,8 @@ function create() {
 
 function update() {
 
+  text.text = "" + player1Kills;
+  text2.text = "" + player2Kills;
 
 	if(keyboard.addKey(Phaser.KeyCode.W).isDown) {
 
@@ -126,5 +133,31 @@ function update() {
     weapon2.fire();
 
   }
+
+  game.physics.arcade.overlap(weapon.bullets, player2, player2Die,null,this);
+  game.physics.arcade.overlap(weapon2.bullets, player1, player1Die, null, this);
+  game.physics.arcade.collide(player2,player1, null,null,this);
+
+}
+
+function player2Die() {
+
+  player1.position.set(100,350);
+  player2.position.set(1000,350);
+  player1Kills += 1;
+  weapon2.killAll();
+  weapon.killAll();
+
+}
+
+
+function player1Die() {
+
+  player1.position.set(100,350);
+  player2.position.set(1000,350);
+  player2Kills += 1;
+  weapon2.killAll();
+  weapon.killAll();
+
 
 }
