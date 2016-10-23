@@ -2,22 +2,21 @@ var game = new Phaser.Game(1300, 700, Phaser.AUTO, '', { preload: preload, creat
 var player1;
 var player2;
 var cursors;
-var weapon; 
 var keyboard;
+var weapon1;
 var weapon2;
 var player1Kills = 0;
 var player2Kills = 0;
 var text;
 var text2;
 
-
 function preload() {
 
-	game.load.image('bg1', "bg1.jpg");
-	game.load.image('player', "player.png");
-  game.load.image('player1', "player1.png");
-  game.load.image('bullet', "bullet.png");
-  game.load.image('bullet1', "bullet1.png");
+	game.load.image('bg1', "res/bg1.jpg");
+	game.load.image('player', "res/player.png");
+  game.load.image('player1', "res/player1.png");
+  game.load.image('bullet', "res/bullet.png");
+  game.load.image('bullet1', "res/bullet1.png");
 
 	//game.load.image('player2', "player2.png");
 }
@@ -44,11 +43,11 @@ function create() {
   player2.body.collideWorldBounds = true;
 
 
-  weapon = game.add.weapon(100, 'bullet');
-  weapon.killType = Phaser.Weapon.KILL_WORLD_BOUNDS;
-  weapon.fireRate = 20;
-  weapon.bulletSpeed = 800;
-  weapon.trackSprite(player1,20,0,true);  
+  weapon1 = game.add.weapon(100, 'bullet');
+  weapon1.killType = Phaser.Weapon.KILL_WORLD_BOUNDS;
+  weapon1.fireRate = 20;
+  weapon1.bulletSpeed = 800;
+  weapon1.trackSprite(player1,20,0,true);  
   game.physics.arcade.enable(weapon);
 
 
@@ -57,6 +56,7 @@ function create() {
   weapon2.fireRate = 20;
   weapon2.bulletSpeed = 800;
   weapon2.trackSprite(player2,20,0,true);
+
 
   text = game.add.text(16,16, "0");
   text2 = game.add.text(1100,16, "0");
@@ -125,7 +125,7 @@ function update() {
 
   if(keyboard.addKey(Phaser.KeyCode.SHIFT).isDown) {
 
-    weapon.fire();
+    weapon1.fire();
 
   }
   if(keyboard.addKey(Phaser.KeyCode.SPACEBAR).isDown) {
