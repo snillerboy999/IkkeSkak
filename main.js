@@ -27,6 +27,7 @@ function create() {
   player1.anchor.set(0.5,0.5);
   player1.body.drag.set(70);
   player1.body.maxVelocity.set(500);
+  player1.body.collideWorldBounds = true;
 
 
 
@@ -36,6 +37,8 @@ function create() {
 	player2.anchor.set(0.5,0.5);
   player2.body.drag.set(70);
   player2.body.maxVelocity.set(500);
+  player2.body.collideWorldBounds = true;
+
 
   weapon = game.add.weapon(30, 'bullet');
   weapon.killType = Phaser.Weapon.KILL_WORLD_BOUNDS;
@@ -61,6 +64,7 @@ function create() {
 }
 
 function update() {
+
 
 	if(keyboard.addKey(Phaser.KeyCode.W).isDown) {
 
