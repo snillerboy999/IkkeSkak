@@ -17,15 +17,13 @@ function preload() {
   game.load.image('player1', "res/player1.png");
   game.load.image('bullet', "res/bullet.png");
   game.load.image('bullet1', "res/bullet1.png");
-
-	//game.load.image('player2', "player2.png");
 }
 
 function create() {
 
 	game.add.sprite(0,0,'bg1');
 
-  player1 = this.add.sprite(100,350,'player');
+  player1 = this.add.sprite(100,350,'player1');
   player1.scale.setTo(0.035,0.035);
   game.physics.arcade.enable(player1);
   player1.anchor.set(0.5,0.5);
@@ -33,7 +31,7 @@ function create() {
   player1.body.maxVelocity.set(500);
   player1.body.collideWorldBounds = true;
 
-  player2 = this.add.sprite(1000,350,'player1');
+  player2 = this.add.sprite(1000,350,'player2');
   player2.scale.set(0.02,0.02);
   game.physics.arcade.enable(player2);
   player2.anchor.set(0.5,0.5);
