@@ -12,8 +12,8 @@ var text2;
 
 function preload() {
 
-	game.load.image('bg1', "res/bg1.jpg");
-	game.load.image('player', "res/player.png");
+  game.load.image('bg1', "res/bg1.jpg");
+  game.load.image('player', "res/player.png");
   game.load.image('player1', "res/player1.png");
   game.load.image('bullet', "res/bullet.png");
   game.load.image('bullet1', "res/bullet1.png");
@@ -22,34 +22,31 @@ function preload() {
 }
 
 function create() {
+
 	game.add.sprite(0,0,'bg1');
 
-	player1 = this.add.sprite(100,350,'player');
-	player1.scale.setTo(0.035,0.035);
+  player1 = this.add.sprite(100,350,'player');
+  player1.scale.setTo(0.035,0.035);
   game.physics.arcade.enable(player1);
   player1.anchor.set(0.5,0.5);
   player1.body.drag.set(70);
   player1.body.maxVelocity.set(500);
   player1.body.collideWorldBounds = true;
 
-
-
-	player2 = this.add.sprite(1000,350,'player1');
-	player2.scale.set(0.02,0.02);
-	game.physics.arcade.enable(player2);
-	player2.anchor.set(0.5,0.5);
+  player2 = this.add.sprite(1000,350,'player1');
+  player2.scale.set(0.02,0.02);
+  game.physics.arcade.enable(player2);
+  player2.anchor.set(0.5,0.5);
   player2.body.drag.set(70);
   player2.body.maxVelocity.set(500);
   player2.body.collideWorldBounds = true;
-
 
   weapon1 = game.add.weapon(100, 'bullet');
   weapon1.killType = Phaser.Weapon.KILL_WORLD_BOUNDS;
   weapon1.fireRate = 20;
   weapon1.bulletSpeed = 800;
-  weapon1.trackSprite(player1,20,0,true);  
+  weapon1.trackSprite(player1,20,0,true);
   game.physics.arcade.enable(weapon1);
-
 
   weapon2 = game.add.weapon(100,'bullet1');
   weapon2.killType = Phaser.Weapon.KILL_WORLD_BOUNDS;
@@ -61,10 +58,9 @@ function create() {
   text = game.add.text(16,16, "0");
   text2 = game.add.text(1100,16, "0");
 
-	cursors = game.input.keyboard.createCursorKeys();
+  cursors = game.input.keyboard.createCursorKeys();
 
   keyboard = game.input.keyboard;
-
 
 }
 
@@ -73,11 +69,11 @@ function update() {
   text.text = "" + player1Kills;
   text2.text = "" + player2Kills;
 
-	if(keyboard.addKey(Phaser.KeyCode.W).isDown) {
+  if(keyboard.addKey(Phaser.KeyCode.W).isDown) {
 
-		game.physics.arcade.accelerationFromRotation(player1.rotation, 250, player1.body.acceleration);
+    game.physics.arcade.accelerationFromRotation(player1.rotation, 250, player1.body.acceleration);
 
-	} else {
+  } else {
 
     player1.body.acceleration.set(0);
 
@@ -158,6 +154,5 @@ function player1Die() {
   player2Kills += 1;
   weapon2.killAll();
   weapon1.killAll();
-
 
 }
