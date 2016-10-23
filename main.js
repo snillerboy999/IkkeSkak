@@ -24,7 +24,7 @@ function create() {
 	game.add.sprite(0,0,'bg1');
 
   player1 = this.add.sprite(100,350,'player1');
-  player1.scale.setTo(0.035,0.035);
+  player1.scale.setTo(0.05,0.05);
   game.physics.arcade.enable(player1);
   player1.anchor.set(0.5,0.5);
   player1.body.drag.set(70);
@@ -32,7 +32,7 @@ function create() {
   player1.body.collideWorldBounds = true;
 
   player2 = this.add.sprite(1000,350,'player2');
-  player2.scale.set(0.02,0.02);
+  player2.scale.set(0.05,0.05);
   game.physics.arcade.enable(player2);
   player2.anchor.set(0.5,0.5);
   player2.body.drag.set(70);
